@@ -1,0 +1,45 @@
+@import "variables";
+@import "../node_modules/bootstrap/scss/bootstrap.scss";
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap');
+
+.logo {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 2em;
+
+    &_img {
+        width: 50px;
+    }
+}
+
+.searchBar {
+    display: flex;
+    justify-content: center;
+
+    input {
+        width: 80%;
+        height: 3em;
+        background: #E7E7E7;
+        border-radius: 5px;
+        color: #000000;
+        opacity: 0.25;
+        padding: 1em;
+    }
+}
+
+.form-select {
+    font-size: 18px;
+}
+
+.select-ingredients {
+    background: $select-ingredients-bg;
+}
+
+.select-appareil {
+    background: $select-appareil-bg;
+}
+
+.select-ustensiles {
+    background: $select-ustensiles-bg;
+}
