@@ -11,8 +11,7 @@ const recipes = [
             },
             {
                 "ingredient" : "Jus de citron",
-                "quantity" : 2,
-                "unit" : ""
+                "quantity" : 2
             },
             {
                 "ingredient" : "Crème de coco",
@@ -21,13 +20,11 @@ const recipes = [
             },
             {
                 "ingredient" : "Sucre",
-                "quantity" : 30,
+                "quantite" : 30,
                 "unit" : "grammes"
             },
             {
-                "ingredient": "Glaçons",
-                "quantity" : "2",
-                "unit" : ""
+                "ingredient": "Glaçons"
             }
         ],
         "time": 10,
@@ -55,7 +52,7 @@ const recipes = [
             },
             {
                 "ingredient" : "Carotte",
-                "quantity" : 1
+                "quantite" : 1
             },
             {
                 "ingredient" : "Citron Vert",
@@ -1728,4 +1725,4 @@ const recipes = [
     }
 ]
 
-export default recipes;
+export default recipes

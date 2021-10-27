@@ -30,23 +30,19 @@
     color: white;
     width: 170px;
     height: 69px;
-
-    &::after {
-        content: '\25BC';
-        background-image: url('images\icons\chevron-down.svg');
-    }
+    border: none;
 }
 
 .select-ingredients {
-    background: $select-ingredients-bg;
+    background-color: $select-ingredients-bg;
 }
 
 .select-appareil {
-    background: $select-appareil-bg;
+    background-color: $select-appareil-bg;
 }
 
 .select-ustensiles {
-    background: $select-ustensiles-bg;
+    background-color: $select-ustensiles-bg;
 }
 
 .card {

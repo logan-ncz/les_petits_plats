@@ -36,7 +36,7 @@
     <div class="container">
       <div class="row">
         <div class="col-12 searchBar">
-          <input name="searchBar" type="search" placeholder="Rechercher un ingrédient, appareil, ustensiles ou une recette">
+          <input id="searchInput" type="search" placeholder="Rechercher un ingrédient, appareil, ustensiles ou une recette">
         </div>
       </div>
       <div class="row mt-3">
@@ -56,7 +56,7 @@
           </select>
         </div>
       </div>
-      <div class="row mt-3 recipes">
+      <div id="recipesList" class="row mt-3 recipes">
         
       </div>
     </div>
@@ -71,5 +71,13 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
   
     <script src="https://kit.fontawesome.com/f8f9624369.js" crossorigin="anonymous"></script>
-    <script src="/js/index.js" type="module"></script>
+    <script type="module" src="/js/index.js"></script>
+    <!-- <script>$(document).ready(function(){
+      $("#searchInput").on("keyup", function() {
+         var value = $(this).val().toLowerCase();
+         $("#recipesList .col-3").filter(function() {
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+         });
+      });
+    });</script> -->
   </body>
