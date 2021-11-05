@@ -6,48 +6,59 @@ export default class filtersBtn {
     }
 
     ingredients() {
-        let button = document.querySelector('.select-ingredients')
-
         let selector = document.querySelector('.select-ingredients-selected')
 
         let selectBtn = document.querySelector('.select-ingredients-btn')
 
-        this.click(button, selector, selectBtn) 
+        let openBtn = document.querySelector('#openIngredientsFilter')
+
+        let closeBtn = document.querySelector('#closeIngredientsFilter')
+
+        this.click(selector, selectBtn, openBtn, closeBtn) 
     }
 
     appareils() {
-        let button = document.querySelector('.select-appareil')
-
         let selector = document.querySelector('.select-appareil-selected')
 
         let selectBtn = document.querySelector('.select-appareil-btn')
 
-        this.click(button, selector, selectBtn)       
+        let openBtn = document.querySelector('#openAppareilFilter')
+
+        let closeBtn = document.querySelector('#closeAppareilFilter')
+
+        this.click(selector, selectBtn, openBtn, closeBtn)       
     }
 
     ustensiles() {
-        let button = document.querySelector('.select-ustensiles')
-
         let selector = document.querySelector('.select-ustensiles-selected')
 
         let selectBtn = document.querySelector('.select-ustensiles-btn')
 
-        this.click(button, selector, selectBtn)      
+        let openBtn = document.querySelector('#openUstensilesFilter')
+
+        let closeBtn = document.querySelector('#closeUstensilesFilter')
+
+        console.log(closeBtn)
+
+        this.click(selector, selectBtn, openBtn, closeBtn)      
     }
 
-    click(button, selector, selectBtn) {
+    click(selector, selectBtn, openBtn, closeBtn) {
 
         
 
-        button.addEventListener('click', event => {
-            if (selector.style.display === 'flex') {
-                selector.style.display = 'none'
-                selectBtn.style.width = '11rem'
-            } else {
-                selector.style.display = 'flex'
-                selectBtn.style.width = '35rem'
-                // selectBtn.style.margin = '0 0 1em'
-            }
-        })  
+        selectBtn.addEventListener('click', event => {
+            selector.style.display = 'flex'
+            selectBtn.style.width = '35rem'
+            openBtn.style.display = 'none'
+            closeBtn.style.display = 'block'
+        })
+
+        closeBtn.addEventListener('click', event => {
+            selector.style.display = 'none'
+            selectBtn.style.width = '11rem'
+            closeBtn.style.display = 'none'
+            openBtn.style.display = 'block'
+        })
     }
 }
