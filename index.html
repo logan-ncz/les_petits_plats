@@ -36,27 +36,197 @@
     <div class="container">
       <div class="row">
         <div class="col-12 searchBar">
-          <input id="searchInput" type="search" placeholder="Rechercher un ingrédient, appareil, ustensiles ou une recette">
+          <input id="searchBarInput" type="search" placeholder="Rechercher un ingrédient, appareil, ustensiles ou une recette">
+          <i class="fas fa-search"></i>
         </div>
       </div>
-      <div class="row mt-3">
-        <div class="col-2 mx-3">
-          <select class="form-select select-ingredients" name="ingredients" id="" placeholder="ustensiles">
-            <option selected>Ingrédients</option>
-          </select>
-        </div>
-        <div class="col-2 mx-3">
-          <select class="form-select select-appareil" name="appareil" id="">
-            <option selected>Appareil</option>
-          </select>
-        </div>
-        <div class="col-2 mx-3">
-          <select class="form-select select-ustensiles" name="ustensiles" id="">
-            <option selected>Ustensiles</option>
-          </select>
-        </div>
+      <div class="filter">
+          <div class="select-ingredients">
+            <button class="select-ingredients-btn"><p>Ingrédients</p> <em class="fas fa-chevron-down"></em></button>
+            <div class="select-ingredients select-ingredients-selected">
+              <input id="searchInput" type="search" placeholder="Recherche un ingrédient">
+              <i class="fas fa-chevron-up" id="closeIngredientsFilter"></i>
+              <ul class="ingredients-list">
+                <li class="ingredient__item">Ail</li>
+                <li class="ingredient__item">Ananas</li>
+                <li class="ingredient__item">Bananes</li>
+                <li class="ingredient__item">Basilic</li>
+                <li class="ingredient__item">Beurre</li>
+                <li class="ingredient__item">Beurre fondu</li>
+                <li class="ingredient__item">Beurre salé</li>
+                <li class="ingredient__item">Bicarbonate</li>
+                <li class="ingredient__item">Blanc de dinde</li>
+                <li class="ingredient__item">Boudoirs</li>
+                <li class="ingredient__item">Carotte</li>
+                <li class="ingredient__item">Champignons de paris</li>
+                <li class="ingredient__item">Chocolat</li>
+                <li class="ingredient__item">Chocolat au lait</li>
+                <li class="ingredient__item">Chocolat noir</li>
+                <li class="ingredient__item">Chocolat noir en pepites</li>
+                <li class="ingredient__item">Citron</li>
+                <li class="ingredient__item">Citron Vert</li>
+                <li class="ingredient__item">Concombre</li>
+                <li class="ingredient__item">Coulis de tomates</li>
+                <li class="ingredient__item">Courgette</li>
+                <li class="ingredient__item">Crème de coco</li>
+                <li class="ingredient__item">Crème fraîche</li>
+                <li class="ingredient__item">Crème liquide</li>
+                <li class="ingredient__item">Cumin</li>
+                <li class="ingredient__item">Eau</li>
+                <li class="ingredient__item">Emmental</li>
+                <li class="ingredient__item">Farine</li>
+                <li class="ingredient__item">Farine de blé noir</li>
+                <li class="ingredient__item">Feuilles de laitue</li>
+                <li class="ingredient__item">Fraise</li>
+                <li class="ingredient__item">Fromage blanc</li>
+                <li class="ingredient__item">Fromage de chèvre</li>
+                <li class="ingredient__item">Fromage à raclette</li>
+                <li class="ingredient__item">Glace à la vanille</li>
+                <li class="ingredient__item">Glaçons</li>
+                <li class="ingredient__item">Gruyère</li>
+                <li class="ingredient__item">Gruyère râpé</li>
+                <li class="ingredient__item">Haricots verts</li>
+                <li class="ingredient__item">Huile d'olives</li>
+                <li class="ingredient__item">Jambon de parme</li>
+                <li class="ingredient__item">Jambon fumé</li>
+                <li class="ingredient__item">Jus de citron</li>
+                <li class="ingredient__item">Kiwis</li>
+                <li class="ingredient__item">Lait</li>
+                <li class="ingredient__item">Lait de coco</li>
+                <li class="ingredient__item">Lardons</li>
+                <li class="ingredient__item">Lasagnes</li>
+                <li class="ingredient__item">Macaronis</li>
+                <li class="ingredient__item">Mangue</li>
+                <li class="ingredient__item">Mascarpone</li>
+                <li class="ingredient__item">Mayonnaise</li>
+                <li class="ingredient__item">Maïs</li>
+                <li class="ingredient__item">Maïzena</li>
+                <li class="ingredient__item">Menthe</li>
+                <li class="ingredient__item">Miel</li>
+                <li class="ingredient__item">Moutarde de Dijon</li>
+                <li class="ingredient__item">Mozzarella</li>
+                <li class="ingredient__item">Mâche</li>
+                <li class="ingredient__item">Noix</li>
+                <li class="ingredient__item">Noix de muscade</li>
+                <li class="ingredient__item">Oeuf</li>
+                <li class="ingredient__item">Oeuf dur</li>
+                <li class="ingredient__item">Oignon</li>
+                <li class="ingredient__item">Olives</li>
+                <li class="ingredient__item">Orange</li>
+                <li class="ingredient__item">Oseille</li>
+                <li class="ingredient__item">Pain</li>
+                <li class="ingredient__item">Pain de mie</li>
+                <li class="ingredient__item">Paprika</li>
+                <li class="ingredient__item">Parmesan</li>
+                <li class="ingredient__item">Pastèque</li>
+                <li class="ingredient__item">Patate douce</li>
+                <li class="ingredient__item">Pennes</li>
+                <li class="ingredient__item">Petits poids</li>
+                <li class="ingredient__item">Poireau</li>
+                <li class="ingredient__item">Poires au jus</li>
+                <li class="ingredient__item">Pois Cassé</li>
+                <li class="ingredient__item">Pois chiches</li>
+                <li class="ingredient__item">Poivron rouge</li>
+                <li class="ingredient__item">Pommes</li>
+                <li class="ingredient__item">Pommes de terre</li>
+                <li class="ingredient__item">Poudre d'amendes</li>
+                <li class="ingredient__item">Poulet</li>
+                <li class="ingredient__item">Pruneaux</li>
+                <li class="ingredient__item">Pâte brisée</li>
+                <li class="ingredient__item">Pâte feuilletée</li>
+                <li class="ingredient__item">Pâte sablée</li>
+                <li class="ingredient__item">Pâte à pizza</li>
+                <li class="ingredient__item">Rhubarbe</li>
+                <li class="ingredient__item">Riz blanc</li>
+                <li class="ingredient__item">Roblochon</li>
+                <li class="ingredient__item">Salade Verte</li>
+                <li class="ingredient__item">Saucisse bretonne ou de toulouse</li>
+                <li class="ingredient__item">Saumon Fumé</li>
+                <li class="ingredient__item">Spaghettis</li>
+                <li class="ingredient__item">Sucre</li>
+                <li class="ingredient__item">Sucre en poudre</li>
+                <li class="ingredient__item">Sucre glace</li>
+                <li class="ingredient__item">Sucre roux</li>
+                <li class="ingredient__item">Sucre vanillé</li>
+                <li class="ingredient__item">Tagliatelles</li>
+                <li class="ingredient__item">Thon Rouge (ou blanc)</li>
+                <li class="ingredient__item">Thon en miettes</li>
+                <li class="ingredient__item">Tomate</li>
+                <li class="ingredient__item">Tomates cerises</li>
+                <li class="ingredient__item">Tomates pelées</li>
+                <li class="ingredient__item">Vermicelles</li>
+                <li class="ingredient__item">Viande hachée</li>
+                <li class="ingredient__item">Viande hachée 1% de matière grasse</li>
+                <li class="ingredient__item">Vin blanc sec</li>
+                <li class="ingredient__item">Vin rouge</li>
+                <li class="ingredient__item">Vinaigre Balsamic</li>
+                <li class="ingredient__item">Vinaigre de cidre</li>
+                <li class="ingredient__item">Vinaigrette</li>
+                <li class="ingredient__item">Échalote</li>
+              </ul>
+              
+            </div>
+          </div>
+          <div class="select-appareil">
+            <button class="select-appareil-btn"><p>Appareil</p> <em class="fas fa-chevron-down"></em></button>
+            <div class="select-appareil select-appareil-selected">
+              <input id="searchInput" type="search" placeholder="Recherche un appareil">
+              <i class="fas fa-chevron-up" id="closeAppareilFilter"></i>
+              <ul class="appareil-list">
+                <li class="list-appareil" data-filter="blender">Blender</li>
+                <li class="list-appareil" data-filter="casserole">Casserole</li>
+                <li class="list-appareil" data-filter="casserolle">Casserolle</li>
+                <li class="list-appareil" data-filter="casserolle.">Casserolle.</li>
+                <li class="list-appareil" data-filter="cocotte">Cocotte</li>
+                <li class="list-appareil" data-filter="cuiseur de riz">Cuiseur de riz</li>
+                <li class="list-appareil" data-filter="four">Four</li>
+                <li class="list-appareil" data-filter="mixer">Mixer</li>
+                <li class="list-appareil" data-filter="moule à charlotte">Moule a charlotte</li>
+                <li class="list-appareil" data-filter="poële">Poele</li>
+                <li class="list-appareil" data-filter="poële à crêpe">Poele a crepe</li>
+                <li class="list-appareil" data-filter="saladier">Saladier</li>
+                <li class="list-appareil" data-filter="sauteuse">Sauteuse</li>
+              </ul>
+              
+            </div>
+          </div>
+          <div class="select-ustensiles">
+            <button class="select-ustensiles-btn"><p>Ustensiles</p> <em class="fas fa-chevron-down"></em></button>
+            <div class="select-ustensiles select-ustensiles-selected">
+              <input id="searchInput" type="search" placeholder="Recherche un ustensile">
+              <i class="fas fa-chevron-up" id="closeUstensilesFilter"></i>
+              <ul class="ustensiles-list">
+                <li class="list-ustensiles" data-filter="bol">Bol</li>
+                <li class="list-ustensiles" data-filter="casserolle">Casserolle</li>
+                <li class="list-ustensiles" data-filter="cocotte minute">Cocotte minute</li>
+                <li class="list-ustensiles" data-filter="couteau">Couteau</li>
+                <li class="list-ustensiles" data-filter="cuillère en bois">Cuillere en bois</li>
+                <li class="list-ustensiles" data-filter="cuillère à melon">Cuillere a melon</li>
+                <li class="list-ustensiles" data-filter="cuillère à soupe">Cuillere a soupe</li>
+                <li class="list-ustensiles" data-filter="fouet">Fouet</li>
+                <li class="list-ustensiles" data-filter="fourchette">Fourchette</li>
+                <li class="list-ustensiles" data-filter="louche">Louche</li>
+                <li class="list-ustensiles" data-filter="moule">Moule</li>
+                <li class="list-ustensiles" data-filter="moule à gateaux">Moule a gateaux</li>
+                <li class="list-ustensiles" data-filter="moule à tarte">Moule a tarte</li>
+                <li class="list-ustensiles" data-filter="moule à tartelettes (6)">Moule a tartelettes (6)</li>
+                <li class="list-ustensiles" data-filter="passoire">Passoire</li>
+                <li class="list-ustensiles" data-filter="plaque de cuisson">Plaque de cuisson</li>
+                <li class="list-ustensiles" data-filter="plat à gratin">Plat a gratin</li>
+                <li class="list-ustensiles" data-filter="poelle à frire">Poelle a frire</li>
+                <li class="list-ustensiles" data-filter="presse citron">Presse citron</li>
+                <li class="list-ustensiles" data-filter="rouleau à patisserie">Rouleau a patisserie</li>
+                <li class="list-ustensiles" data-filter="râpe à fromage">Rape a fromage</li>
+                <li class="list-ustensiles" data-filter="saladier">Saladier</li>
+                <li class="list-ustensiles" data-filter="spatule">Spatule</li>
+                <li class="list-ustensiles" data-filter="verres">Verres</li>
+                <li class="list-ustensiles" data-filter="économe">Econome</li>
+              </ul>
+              
+            </div>
+          </div>
       </div>
-      <div id="recipesList" class="row mt-3 recipes">
+      <div id="recipesList" class="row mt-4 recipes">
         
       </div>
     </div>

@@ -11134,33 +11134,101 @@ textarea.form-control-lg {
   justify-content: center;
 }
 .searchBar input {
-  width: 80%;
-  height: 3em;
+  width: 100%;
+  height: 4.3125em;
   background: #E7E7E7;
   border-radius: 5px;
   color: #000000;
   opacity: 0.25;
   padding: 1em;
 }
+.searchBar i {
+  position: absolute;
+  top: 5.2em;
+  right: 4.1em;
+  font-size: 2rem;
+}
 
-.form-select {
+.filter {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin: 1rem 0;
+}
+
+.select-ingredients-btn, .select-appareil-btn, .select-ustensiles-btn {
   font-size: 18px;
   color: white;
   width: 170px;
   height: 69px;
   border: none;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 0.5rem 1rem 0.5rem 0;
+}
+.select-ingredients-btn p, .select-appareil-btn p, .select-ustensiles-btn p {
+  margin: 0;
+}
+.select-ingredients-btn em, .select-appareil-btn em, .select-ustensiles-btn em {
+  position: relative;
 }
 
-.select-ingredients {
+.select-ingredients-btn, .select-ingredients-selected {
   background-color: #3282F7;
 }
 
-.select-appareil {
+.select-appareil-btn, .select-appareil-selected {
   background-color: #68D9A4;
 }
 
-.select-ustensiles {
+.select-ustensiles-btn, .select-ustensiles-selected {
   background-color: #ED6454;
+}
+
+.select-ingredients-selected, .select-appareil-selected, .select-ustensiles-selected {
+  font-size: 18px;
+  padding: 1em;
+  color: white;
+  width: 35rem;
+  border: none;
+  border-radius: 5px;
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  z-index: 10;
+  top: 15rem;
+}
+.select-ingredients-selected input, .select-appareil-selected input, .select-ustensiles-selected input {
+  background: none;
+  border: none;
+  opacity: 0.5;
+  color: #fff;
+  margin-bottom: 2rem;
+}
+
+#closeIngredientsFilter, #closeAppareilFilter, #closeUstensilesFilter {
+  position: absolute;
+  right: 2rem;
+  top: 1.5rem;
+}
+
+.ingredients-list, .appareil-list, .ustensiles-list {
+  display: grid;
+  grid-template-columns: repeat(3, 2fr);
+  grid-template-rows: 1fr;
+  gap: 0.5rem 0.5rem;
+  list-style: none;
+  padding: 0;
+}
+.ingredients-list li, .appareil-list li, .ustensiles-list li {
+  font-size: 18px;
+}
+
+.recipes {
+  gap: 3rem 3rem;
+  padding-left: 0.75rem;
 }
 
 .card {

@@ -1,24 +1,6 @@
-class search {
-
-    // searchBar() {
-    //     $(document).ready(function(){
-    //         $("#searchInput").on("keyup", function() {
-    //            var value = $(this).val().toLowerCase();
-    //            $("#recipesList .col-3").filter(function() {
-    //               $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-    //            });
-    //         });
-    //       });
-    // }
+export default class search {
 
     search() {
-    //     let searchInput = document.querySelector('#searchInput')
-
-    //     let value = searchInput.val().toLowerCase();
-
-    //     let recipesList = document.querySelectorAll('#recipesList .col-3')
-
-    //     recipesList.toggle(this.text().toLowerCase().indexOf(value) > -1)
 
         $("#searchInput").on("keyup", function() {
             var value = $(this).val().toLowerCase();
@@ -29,5 +11,3 @@ class search {
 
     }
 }
-
-export default search
