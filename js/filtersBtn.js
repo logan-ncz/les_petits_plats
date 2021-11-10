@@ -1,51 +1,32 @@
 export default class filtersBtn {
     constructor() {
-        this.ingredients()
-        this.appareils()
-        this.ustensiles()
+        
+        this.table = [ 'ingredients', 'appareil', 'ustensiles'];
+        
+        this.filterTag(this.table)
+        
     }
 
-    ingredients() {
-        let selector = document.querySelector('.select-ingredients-selected')
+    filterTag(type) {
 
-        let selectBtn = document.querySelector('.select-ingredients-btn')
+        type.forEach(element => {
 
-        let openBtn = document.querySelector('#openIngredientsFilter')
+            let selector = document.querySelector(`.select-${element}-selected`)
+            // let selector = document.querySelector('.select-' + type + '-selected')
 
-        let closeBtn = document.querySelector('#closeIngredientsFilter')
+            let selectBtn = document.querySelector(`.select-${element}-btn`)
 
-        this.click(selector, selectBtn, openBtn, closeBtn) 
-    }
+            let openBtn = document.querySelector(`#open-${element}-filter`)
 
-    appareils() {
-        let selector = document.querySelector('.select-appareil-selected')
+            let closeBtn = document.querySelector(`#close-${element}-filter`)
 
-        let selectBtn = document.querySelector('.select-appareil-btn')
+            this.click(selector, selectBtn, openBtn, closeBtn) 
 
-        let openBtn = document.querySelector('#openAppareilFilter')
-
-        let closeBtn = document.querySelector('#closeAppareilFilter')
-
-        this.click(selector, selectBtn, openBtn, closeBtn)       
-    }
-
-    ustensiles() {
-        let selector = document.querySelector('.select-ustensiles-selected')
-
-        let selectBtn = document.querySelector('.select-ustensiles-btn')
-
-        let openBtn = document.querySelector('#openUstensilesFilter')
-
-        let closeBtn = document.querySelector('#closeUstensilesFilter')
-
-        console.log(closeBtn)
-
-        this.click(selector, selectBtn, openBtn, closeBtn)      
+        });
+        
     }
 
     click(selector, selectBtn, openBtn, closeBtn) {
-
-        
 
         selectBtn.addEventListener('click', event => {
             selector.style.display = 'flex'
@@ -60,5 +41,7 @@ export default class filtersBtn {
             closeBtn.style.display = 'none'
             openBtn.style.display = 'block'
         })
+
     }
+
 }

@@ -10,18 +10,15 @@ class cards {
     
     render() {
 
-        console.log(this.bdd)
-
-        let ustensiles = []
-
         this.bdd.forEach(recipe => {
-            ustensiles.push(recipe.ustensils)
 
             let cards = document.querySelector('.recipes');
 
             let card = document.createElement('div')
 
-            card.className = recipe.ingredients.map(ingredient => ingredient.ingredient.replace(/ /g,"_")).join(" ") +  ' col-3 card'
+            // card.className = recipe.ingredients.map(ingredient => ingredient.ingredient.replace(/ /g,"_")).join(" ") +  ' col-3 card'
+
+            card.className = 'col-3 card'
 
             let HTML = `<div class="card-top">
 
@@ -57,12 +54,6 @@ class cards {
 
             
         })
-
-        console.log(ustensiles)
-
-        let final = ustensiles.filter( (ele,pos) => ustensiles.indexOf(ele) == pos)
-
-        console.log("Les ustensiles", final)
     }
 
     // ingredients(ingredient) {

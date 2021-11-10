@@ -11208,7 +11208,7 @@ textarea.form-control-lg {
   margin-bottom: 2rem;
 }
 
-#closeIngredientsFilter, #closeAppareilFilter, #closeUstensilesFilter {
+#close-ingredients-filter, #close-appareil-filter, #close-ustensiles-filter {
   position: absolute;
   right: 2rem;
   top: 1.5rem;
@@ -11270,6 +11270,8 @@ textarea.form-control-lg {
 .card .card-body-top-time p {
   font-size: 18px;
   font-weight: 700;
+  margin-top: -2px;
+  margin-left: 0.5rem;
 }
 .card .card-body-bottom {
   display: flex;

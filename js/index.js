@@ -6,7 +6,4 @@ const renderCards = new cards;
 
 const searchBar = new search;
 
-searchBar.search()
-
 const tags = new filtersBtn;
-
