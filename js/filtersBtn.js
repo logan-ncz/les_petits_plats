@@ -29,17 +29,27 @@ export default class filtersBtn {
     click(selector, selectBtn, openBtn, closeBtn) {
 
         selectBtn.addEventListener('click', event => {
+
             selector.style.display = 'flex'
+
             selectBtn.style.width = '35rem'
+
             openBtn.style.display = 'none'
+
             closeBtn.style.display = 'block'
+
         })
 
         closeBtn.addEventListener('click', event => {
+            
             selector.style.display = 'none'
+
             selectBtn.style.width = '11rem'
+
             closeBtn.style.display = 'none'
+
             openBtn.style.display = 'block'
+
         })
 
     }

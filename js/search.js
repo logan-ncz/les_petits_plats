@@ -5,7 +5,9 @@ export default class search {
         this.table = [ 'ingredients', 'appareil', 'ustensiles'];
 
         this.search()
+
         this.searchTag(this.table)
+
     }
 
     search() {
@@ -47,7 +49,9 @@ export default class search {
             searchBar.addEventListener('keyup', event => {
 
                 let input = searchBar.value
+
                 input = input.toLowerCase();
+                
                 let x = document.getElementsByClassName(`${element}__item`);
 
                 for (let i = 0; i < x.length; i++) { 
@@ -55,6 +59,7 @@ export default class search {
                     if (!x[i].innerHTML.toLowerCase().includes(input)) {
 
                         x[i].style.display = "none";
+                        
                     }
                     else {
 
@@ -67,8 +72,6 @@ export default class search {
             })
 
         });
-
-        
 
     }
 
