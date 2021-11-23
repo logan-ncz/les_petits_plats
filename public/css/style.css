@@ -11139,8 +11139,12 @@ textarea.form-control-lg {
   background: #E7E7E7;
   border-radius: 5px;
   color: #000000;
-  opacity: 0.25;
   padding: 1em;
+  border: none;
+}
+.searchBar input::placeholder {
+  opacity: 0.25;
+  /*Change the opacity between 0 and 1*/
 }
 .searchBar i {
   position: absolute;
@@ -11153,7 +11157,31 @@ textarea.form-control-lg {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
-  margin: 1rem 0;
+  margin: 0.5rem 0 1rem;
+}
+
+.tagsSelected {
+  display: flex;
+  flex-direction: row;
+}
+.tagsSelected .tag {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #3282F7;
+  width: 107px;
+  height: 37px;
+  padding: 1em;
+  margin: 1rem 1rem 0.5rem 0;
+  border-radius: 5px;
+}
+.tagsSelected .tag p {
+  color: #fff;
+  margin: 0;
+}
+.tagsSelected .tag i {
+  color: #fff;
+  cursor: pointer;
 }
 
 .select-ingredients-btn, .select-appareil-btn, .select-ustensiles-btn {
@@ -11224,6 +11252,8 @@ textarea.form-control-lg {
 }
 .ingredients-list li, .appareil-list li, .ustensiles-list li {
   font-size: 18px;
+  cursor: pointer;
+  width: fit-content;
 }
 
 .recipes {

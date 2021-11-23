@@ -1485,7 +1485,7 @@ const recipes = [
     }, 
     {
         "id": 44,
-        "name": "Crème déssert au chocolat",
+        "name": "Crème dessert au chocolat",
         "servings": 6,
         "ingredients": [
             {

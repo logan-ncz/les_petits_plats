@@ -3,13 +3,13 @@ export default class filtersBtn {
         
         this.table = [ 'ingredients', 'appareil', 'ustensiles'];
         
-        this.filterTag(this.table)
+        this.filterTag()
         
     }
 
-    filterTag(type) {
+    filterTag() {
 
-        type.forEach(element => {
+        this.table.forEach(element => {
 
             let selector = document.querySelector(`.select-${element}-selected`)
             // let selector = document.querySelector('.select-' + type + '-selected')
