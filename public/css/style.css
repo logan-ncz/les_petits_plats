@@ -11168,7 +11168,7 @@ textarea.form-control-lg {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 107px;
+  min-width: 107px;
   height: 37px;
   padding: 1em;
   margin: 1rem 1rem 0.5rem 0;
@@ -11181,6 +11181,8 @@ textarea.form-control-lg {
 .tagsSelected .tag i {
   color: #fff;
   cursor: pointer;
+  position: relative;
+  right: -6%;
 }
 
 .select-ingredients-btn, .select-appareil-btn, .select-ustensiles-btn {

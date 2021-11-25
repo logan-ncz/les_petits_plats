@@ -52,7 +52,7 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        width: 107px;
+        min-width: 107px;
         height: 37px;
         padding: 1em;
         margin: 1rem 1rem 0.5rem 0;
@@ -66,6 +66,8 @@
         i {
             color: #fff;
             cursor: pointer;
+            position: relative;
+            right: -6%;
         }
     }
 }

@@ -86,25 +86,33 @@ export default class search {
                                     //Display
                         //EndFroeach
 
-                this.tags.map(tag => {
+                // this.tags.map(tag => {
                     
-                    let searchTags = document.querySelectorAll(`.${tag}`)
+                //     let searchTags = document.querySelectorAll(`.${tag}`)
 
-                    searchTags.forEach(searchTag => {
+                //     searchTags.forEach(searchTag => {
 
-                        searchTag.addEventListener("click", event => {
-                            if (this.selectedTags.length >= 1 && filtre1 === true) {
-                                this.selectedTags.forEach(element => {
-                                    if (!x[i].innerHTML.toLowerCase().includes(element)) {
-                                        x[i].style.display = 'none'
-                                    }
-                                });
-                            }
-                        })
-                    })
+                //         searchTag.addEventListener("click", event => {
+                //             if (this.selectedTags.length >= 1 && filtre1 === true) {
+                //                 this.selectedTags.forEach(element => {
+                //                     if (!x[i].innerHTML.toLowerCase().includes(element)) {
+                //                         x[i].style.display = 'none'
+                //                     }
+                //                 });
+                //             }
+                //         })
+                //     })
 
                     
-                })
+                // })
+
+                if (this.selectedTags.length >= 1 && filtre1 === true) {
+                    this.selectedTags.forEach(element => {
+                        if (!x[i].innerHTML.toLowerCase().includes(element)) {
+                            x[i].style.display = 'none'
+                        }
+                    });
+                }
 
                 this.displayIngredientsOfEachRecipe()
 
@@ -127,8 +135,6 @@ export default class search {
             event.target.parentElement.remove()
 
             this.removeTag(this.selectedTags, tag.toLowerCase())
-
-            console.log(this.selectedTags)
 
         })
 
