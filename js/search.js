@@ -59,59 +59,49 @@ export default class search {
 
                 input = input.toLowerCase();
 
-                
                 //MEttre toutes les card en flex
 
-                
+                x[i].style.display = 'flex'
 
-                    x[i].style.display = 'flex'
+                let filtre1 = true
 
-                    let filtre1 = true
+                if (input.length >= 3) {
 
-                    if (input.length >= 3) {
+                    if (!x[i].innerHTML.toLowerCase().includes(input)) {
 
-                        if (!x[i].innerHTML.toLowerCase().includes(input)) {
+                        x[i].style.display = "none";
 
-                            x[i].style.display = "none";
+                        filtre1 = false;
 
-                            filtre1 = false;
+                    } 
 
-                        } 
+                }
 
-                    }
+                //Si j'ai de tags et filtre1 == true (ail & banane & tomate)
+                        //Foreach (this.selectedTags)
+                            //IF (!x[i].innerHTML.toLowerCase().includes(tags))
+                                    //Display
+                        //EndFroeach
 
+                this.tags.map(tag => {
                     
+                    let searchTags = document.querySelectorAll(`.${tag}`)
 
-                    //Si j'ai de tags et filtre1 == true (ail & banane & tomate)
-                            //Foreach (this.selectedTags)
-                                //IF (!x[i].innerHTML.toLowerCase().includes(tags))
-                                        //Display
-                            //EndFroeach
+                    searchTags.forEach(searchTag => {
 
-                    this.tags.map(tag => {
-                        
-                        let searchTags = document.querySelectorAll(`.${tag}`)
-
-                        searchTags.forEach(searchTag => {
-
-                            searchTag.addEventListener("click", event => {
-                                if (this.selectedTags.length >= 1 && filtre1 === true) {
-                                    this.selectedTags.forEach(element => {
-                                        if (!x[i].innerHTML.toLowerCase().includes(element)) {
-                                            x[i].style.display = 'none'
-                                        }
-                                    });
-                                }
-                            })
+                        searchTag.addEventListener("click", event => {
+                            if (this.selectedTags.length >= 1 && filtre1 === true) {
+                                this.selectedTags.forEach(element => {
+                                    if (!x[i].innerHTML.toLowerCase().includes(element)) {
+                                        x[i].style.display = 'none'
+                                    }
+                                });
+                            }
                         })
-
-                        
                     })
-                    
-                            
-                    
 
-                
+                    
+                })
 
                 this.displayIngredientsOfEachRecipe()
 
