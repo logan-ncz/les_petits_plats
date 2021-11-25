@@ -24,7 +24,7 @@ export default class search {
 
         this.selectUstensile()
 
-        this.search('searchBarInput' , 'card')
+        this.search()
 
         this.searchTag()
 
@@ -47,11 +47,11 @@ export default class search {
 
     search(MyId, MyClass){
 
-        let searchBar = document.getElementById(MyId)
+        let searchBar = document.getElementById('searchBarInput')
 
-        let x = document.getElementsByClassName(MyClass);
+        let x = document.querySelectorAll('.card');
 
-        for (let i = 0; i < x.length; i++) { 
+        x.forEach (card => { 
 
             searchBar.addEventListener('keyup', event => {
 
@@ -64,15 +64,15 @@ export default class search {
 
                 
 
-                x[i].style.display = 'flex'
+                card.style.display = 'flex'
 
                 let filtre1 = true
 
                 if (input.length >= 3) {
 
-                    if (!x[i].innerHTML.toLowerCase().includes(input)) {
+                    if (!card.innerHTML.toLowerCase().includes(input)) {
 
-                        x[i].style.display = "none";
+                        card.style.display = "none";
 
                         filtre1 = false;
 
@@ -108,8 +108,8 @@ export default class search {
 
                 if (this.selectedTags.length >= 1 && filtre1 === true) {
                     this.selectedTags.forEach(element => {
-                        if (!x[i].innerHTML.toLowerCase().includes(element)) {
-                            x[i].style.display = 'none'
+                        if (!card.innerHTML.toLowerCase().includes(element)) {
+                            card.style.display = 'none'
                         }
                     });
                 }
@@ -123,7 +123,7 @@ export default class search {
                 this.errorMessage()
 
             }) 
-        }
+        })
     }
 
     removeTagHTML(tag) {
