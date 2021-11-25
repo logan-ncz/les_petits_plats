@@ -47,7 +47,7 @@ export default class renderTags {
         divHTML.style.background = '#ED6454'
 
         let template = `<p>${tag}</p>
-        <i class="removeTagBtn-${tag.toLowerCase().replace(/ /g, "_")} far fa-times-circle"></i>`
+        <i class="removeTagBtn-${tag.toLowerCase().replace(/ /g, "_").replace(/[\d+()]/g, "")} far fa-times-circle"></i>`
 
         divHTML.innerHTML = template
 
