@@ -24,7 +24,7 @@ export default class search {
 
         this.selectUstensile()
 
-        this.search('searchBarInput' , 'card')
+        this.search()
 
         this.searchTag()
 
@@ -45,11 +45,11 @@ export default class search {
         }
     }
 
-    search(MyId, MyClass){
+    search(){
 
-        let searchBar = document.getElementById(MyId)
+        let searchBar = document.getElementById('searchBarInput')
 
-        let x = document.getElementsByClassName(MyClass);
+        let x = document.getElementsByClassName('card');
 
         for (let i = 0; i < x.length; i++) { 
 
