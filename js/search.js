@@ -86,8 +86,18 @@ export default class search {
                                     //Display
                         //EndFroeach
 
+                
+
+                if (this.selectedTags.length >= 1 && filtre1 === true) {
+                    this.selectedTags.forEach(element => {
+                        if (!card.innerHTML.toLowerCase().includes(element)) {
+                            card.style.display = 'none'
+                        }
+                    });
+                }
+
                 // this.tags.map(tag => {
-                    
+                                    
                 //     let searchTags = document.querySelectorAll(`.${tag}`)
 
                 //     searchTags.forEach(searchTag => {
@@ -106,14 +116,6 @@ export default class search {
                     
                 // })
 
-                if (this.selectedTags.length >= 1 && filtre1 === true) {
-                    this.selectedTags.forEach(element => {
-                        if (!card.innerHTML.toLowerCase().includes(element)) {
-                            card.style.display = 'none'
-                        }
-                    });
-                }
-
                 this.displayIngredientsOfEachRecipe()
 
                 this.displayApplianceOfEachRecipe()
@@ -128,7 +130,7 @@ export default class search {
 
     removeTagHTML(tag) {
             
-        let removeBtn = document.querySelector(`.removeTagBtn-${tag.toLowerCase().replace(/ /g, "_")}`)
+        let removeBtn = document.querySelector(`.removeTagBtn-${tag.toLowerCase().replace(/ /g, "_").replace(/[\d+()]/g, "")}`)
 
         removeBtn.addEventListener('click', event => {
 
