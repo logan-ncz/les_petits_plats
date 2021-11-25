@@ -20,6 +20,8 @@ class cards {
 
             card.className = 'col-3 card'
 
+            card.setAttribute('data-attribute', recipe.id)
+
             let HTML = `<div class="card-top">
 
                 </div>
@@ -36,7 +38,7 @@ class cards {
                     <div class="card-body-bottom-ingredients">
                     ${recipe.ingredients.map(ingredient =>
                         
-                        `<p><b>${ingredient.ingredient}:</b> ${ingredient.quantity} ${ingredient.unit}</p>`).join(" ")}
+                        `<p class="card-ingredients__item"><b>${ingredient.ingredient}:</b> ${ingredient.quantity} ${ingredient.unit}</p>`).join(" ")}
                     </div>
 
                     <div class="card-body-bottom-description">
