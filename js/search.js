@@ -45,7 +45,7 @@ export default class search {
         }
     }
 
-    search(MyId, MyClass){
+    search(){
 
         let searchBar = document.getElementById('searchBarInput')
 
