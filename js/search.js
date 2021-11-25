@@ -24,7 +24,7 @@ export default class search {
 
         this.selectUstensile()
 
-        this.search('searchBarInput' , 'card')
+        this.search()
 
         this.searchTag()
 
@@ -45,13 +45,15 @@ export default class search {
         }
     }
 
-    search(MyId, MyClass){
+    search(){
 
-        let searchBar = document.getElementById(MyId)
+        let searchBar = document.getElementById('searchBarInput')
 
-        let x = document.getElementsByClassName(MyClass);
+        let x = Array.from(document.querySelectorAll('.card'));
 
-        for (let i = 0; i < x.length; i++) { 
+        console.log(x)
+
+        x.forEach(card => {
 
             searchBar.addEventListener('keyup', event => {
 
@@ -59,17 +61,17 @@ export default class search {
 
                 input = input.toLowerCase();
 
-                //MEttre toutes les card en flex
+                //Mettre toutes les card en flex
 
-                x[i].style.display = 'flex'
+                card.style.display = 'flex'
 
                 let filtre1 = true
 
                 if (input.length >= 3) {
 
-                    if (!x[i].innerHTML.toLowerCase().includes(input)) {
+                    if (!card.innerHTML.toLowerCase().includes(input)) {
 
-                        x[i].style.display = "none";
+                        card.style.display = "none";
 
                         filtre1 = false;
 
@@ -83,25 +85,20 @@ export default class search {
                                     //Display
                         //EndFroeach
 
-                this.tags.map(tag => {
+                
+                if (this.selectedTags.length >= 1 && filtre1 === true) {
+
+                    this.selectedTags.forEach(element => {
+
+                        if (!card.innerHTML.toLowerCase().includes(element)) {
+
+                            card.style.display = 'none'
+
+                        }
+                        
+                    });
                     
-                    let searchTags = document.querySelectorAll(`.${tag}`)
-
-                    searchTags.forEach(searchTag => {
-
-                        searchTag.addEventListener("click", event => {
-                            if (this.selectedTags.length >= 1 && filtre1 === true) {
-                                this.selectedTags.forEach(element => {
-                                    if (!x[i].innerHTML.toLowerCase().includes(element)) {
-                                        x[i].style.display = 'none'
-                                    }
-                                });
-                            }
-                        })
-                    })
-
-                    
-                })
+                }
 
                 this.displayIngredientsOfEachRecipe()
 
@@ -112,7 +109,9 @@ export default class search {
                 this.errorMessage()
 
             }) 
-        }
+
+        })
+
     }
 
     removeTagHTML(tag) {
@@ -124,8 +123,6 @@ export default class search {
             event.target.parentElement.remove()
 
             this.removeTag(this.selectedTags, tag.toLowerCase())
-
-            console.log(this.selectedTags)
 
         })
 
