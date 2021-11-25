@@ -52,6 +52,7 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+        background: #3282F7;
         width: 107px;
         height: 37px;
         padding: 1em;
@@ -146,22 +147,8 @@
         font-size: 18px;
         cursor: pointer;
         width: fit-content;
-        // text-transform: capitalize;
     }
 
-}
-
-.errorMessage {
-    display: none;
-    text-align: center;
-    background: #D04F4F;
-    color: white;
-    padding: 1em;
-    border-radius: 5px;
-
-    p {
-        margin: 0;
-    }
 }
 
 .recipes {

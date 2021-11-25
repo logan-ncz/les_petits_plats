@@ -9,7 +9,7 @@ export default class renderTags {
         divHTML.style.background = '#3282F7'
 
         let template = `<p>${tag}</p>
-        <i class="removeTagBtn-${tag.toLowerCase().replace(/ /g, "_")} far fa-times-circle"></i>`
+        <i class="removeTagBtn-${tag.toLowerCase()} far fa-times-circle"></i>`
 
         divHTML.innerHTML = template
 
@@ -28,7 +28,7 @@ export default class renderTags {
         divHTML.style.background = '#68D9A4'
 
         let template = `<p>${tag}</p>
-        <i class="removeTagBtn-${tag.toLowerCase().replace(/ /g, "_")} far fa-times-circle"></i>`
+        <i class="removeTagBtn-${tag.toLowerCase()} far fa-times-circle"></i>`
 
         divHTML.innerHTML = template
 
@@ -47,7 +47,7 @@ export default class renderTags {
         divHTML.style.background = '#ED6454'
 
         let template = `<p>${tag}</p>
-        <i class="removeTagBtn-${tag.toLowerCase().replace(/ /g, "_")} far fa-times-circle"></i>`
+        <i class="removeTagBtn-${tag.toLowerCase()} far fa-times-circle"></i>`
 
         divHTML.innerHTML = template
 
