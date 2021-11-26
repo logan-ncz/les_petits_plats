@@ -12,11 +12,13 @@ export default class search {
 
         this.selectedTags = []
 
-        this.displayIngredientsOfEachRecipe()
+        this.displayTagsRecipe()
 
-        this.displayApplianceOfEachRecipe()
+        // this.displayIngredientsOfEachRecipe()
 
-        this.displayUstensilsOfEachRecipe()
+        // this.displayApplianceOfEachRecipe()
+
+        // this.displayUstensilsOfEachRecipe()
 
         this.selectIngredient()
 
@@ -142,52 +144,52 @@ export default class search {
 
     }
 
-    displayIngredientsOfEachRecipe() {
+    displayIngredientsOfEachRecipe(recipe) {
 
-        let bdd = recipes
+        // let bdd = recipes
 
-        let cards = document.querySelectorAll('.card')
+        // let cards = document.querySelectorAll('.card')
 
-        let correspondingRecipe = []
+        // let correspondingRecipe = []
 
-        for (let i = 0; i < cards.length; i++) {
+        // for (let i = 0; i < cards.length; i++) {
 
-            const card = cards[i];
+        //     const card = cards[i];
 
-            if (card.style.display === 'flex' || card.style.display === '') {
-                let id = card.getAttribute("data-attribute")
+        //     if (card.style.display === 'flex' || card.style.display === '') {
+        //         let id = card.getAttribute("data-attribute")
 
-                const recipe = !id ? bdd : bdd.find(recipe => recipe.id == id);
+        //         const recipe = !id ? bdd : bdd.find(recipe => recipe.id == id);
 
-                correspondingRecipe.push(recipe);
-            }
+        //         correspondingRecipe.push(recipe);
+        //     }
 
-        }
+        // }
 
-        let tags = []
+        // let tags = []
 
-        correspondingRecipe.forEach(element => {
-            element.ingredients.map(ingredient => {
+        // correspondingRecipe.forEach(element => {
+            recipe.ingredients.map(ingredient => {
 
                 if (!tags.includes(ingredient.ingredient.toLowerCase())) {
                     tags.push(ingredient.ingredient.toLowerCase())
                 }
                 
             })
-        });
+        // });
 
         // console.log(tags)
 
-        tags.sort()
+        // tags.sort()
 
-        let ingredientsList = document.querySelector('.ingredients-list')
+        // let ingredientsList = document.querySelector('.ingredients-list')
 
-        ingredientsList.innerHTML = `${tags.map(ingredient => 
-            `<li class="ingredients__item">${ingredient.charAt(0).toUpperCase() + ingredient.slice(1)}</li>`
-            // Mettre la premiere lettre en majuscule de chaque ingrédient
-        ).join(" ")}`
+        // ingredientsList.innerHTML = `${tags.map(ingredient => 
+        //     `<li class="ingredients__item">${ingredient.charAt(0).toUpperCase() + ingredient.slice(1)}</li>`
+        //     // Mettre la premiere lettre en majuscule de chaque ingrédient
+        // ).join(" ")}`
 
-        this.selectIngredient()
+        // this.selectIngredient()
 
     }
 
@@ -204,11 +206,13 @@ export default class search {
             const card = cards[i];
 
             if (card.style.display === 'flex' || card.style.display === '') {
+                
                 let id = card.getAttribute("data-attribute")
 
                 const recipe = !id ? bdd : bdd.find(recipe => recipe.id == id);
 
                 correspondingRecipe.push(recipe);
+
             }
 
         }
@@ -234,37 +238,35 @@ export default class search {
             // Mettre la premiere lettre en majuscule de chaque ingrédient
         ).join(" ")}`
 
-        this.selectAppareil()
-
     }
 
-    displayUstensilsOfEachRecipe() {
+    displayUstensilsOfEachRecipe(recipe) {
 
-        let bdd = recipes
+        // let bdd = recipes
 
-        let cards = document.querySelectorAll('.card')
+        // let cards = document.querySelectorAll('.card')
 
-        let correspondingRecipe = []
+        // let correspondingRecipe = []
 
-        for (let i = 0; i < cards.length; i++) {
+        // for (let i = 0; i < cards.length; i++) {
 
-            const card = cards[i];
+        //     const card = cards[i];
 
-            if (card.style.display === 'flex' || card.style.display === '') {
-                let id = card.getAttribute("data-attribute")
+        //     if (card.style.display === 'flex' || card.style.display === '') {
+        //         let id = card.getAttribute("data-attribute")
 
-                const recipe = !id ? bdd : bdd.find(recipe => recipe.id == id);
+        //         const recipe = !id ? bdd : bdd.find(recipe => recipe.id == id);
 
-                correspondingRecipe.push(recipe);
-            }
+        //         correspondingRecipe.push(recipe);
+        //     }
 
-        }
+        // }
 
-        let tags = []
+        // let tags = []
 
-        correspondingRecipe.forEach(element => {
+        // correspondingRecipe.forEach(element => {
 
-            element.ustensils.map(ustensil => {
+            recipe.ustensils.map(ustensil => {
 
                 if (!tags.includes(ustensil.toLowerCase())) {
             
@@ -274,18 +276,18 @@ export default class search {
 
             })
 
-        });
+        // });
 
-        tags.sort()
+        // tags.sort()
 
-        let ustensilsList = document.querySelector('.ustensiles-list')
+        // let ustensilsList = document.querySelector('.ustensiles-list')
 
-        ustensilsList.innerHTML = `${tags.map(ustensil => 
-            `<li class="ustensiles__item">${ustensil.charAt(0).toUpperCase() + ustensil.slice(1)}</li>`
-            // Mettre la premiere lettre en majuscule de chaque ustensile
-        ).join(" ")}`
+        // ustensilsList.innerHTML = `${tags.map(ustensil => 
+        //     `<li class="ustensiles__item">${ustensil.charAt(0).toUpperCase() + ustensil.slice(1)}</li>`
+        //     // Mettre la premiere lettre en majuscule de chaque ustensile
+        // ).join(" ")}`
 
-        this.selectUstensile()
+        // this.selectUstensile()
 
     }
     
