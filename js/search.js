@@ -12,17 +12,13 @@ export default class search {
 
         this.selectedTags = []
 
-        this.displayIngredientsOfEachRecipe()
+        this.displayTagsRecipe(this.table)
 
-        this.displayApplianceOfEachRecipe()
+        // this.selectIngredient()
 
-        this.displayUstensilsOfEachRecipe()
+        // this.selectAppareil()
 
-        this.selectIngredient()
-
-        this.selectAppareil()
-
-        this.selectUstensile()
+        // this.selectUstensile()
 
         this.search()
 
@@ -59,11 +55,6 @@ export default class search {
 
                 input = input.toLowerCase();
 
-                
-                //MEttre toutes les card en flex
-
-                
-
                 x[i].style.display = 'flex'
 
                 let filtre1 = true
@@ -80,32 +71,6 @@ export default class search {
 
                 }
 
-                //Si j'ai de tags et filtre1 == true (ail & banane & tomate)
-                        //Foreach (this.selectedTags)
-                            //IF (!x[i].innerHTML.toLowerCase().includes(tags))
-                                    //Display
-                        //EndFroeach
-
-                // this.tags.map(tag => {
-                    
-                //     let searchTags = document.querySelectorAll(`.${tag}`)
-
-                //     searchTags.forEach(searchTag => {
-
-                //         searchTag.addEventListener("click", event => {
-                //             if (this.selectedTags.length >= 1 && filtre1 === true) {
-                //                 this.selectedTags.forEach(element => {
-                //                     if (!x[i].innerHTML.toLowerCase().includes(element)) {
-                //                         x[i].style.display = 'none'
-                //                     }
-                //                 });
-                //             }
-                //         })
-                //     })
-
-                    
-                // })
-
                 if (this.selectedTags.length >= 1 && filtre1 === true) {
                     this.selectedTags.forEach(element => {
                         if (!x[i].innerHTML.toLowerCase().includes(element)) {
@@ -114,11 +79,7 @@ export default class search {
                     });
                 }
 
-                this.displayIngredientsOfEachRecipe()
-
-                this.displayApplianceOfEachRecipe()
-
-                this.displayUstensilsOfEachRecipe()
+                this.displayTagsRecipe(this.table)
 
                 this.errorMessage()
 
@@ -137,104 +98,6 @@ export default class search {
             this.removeTag(this.selectedTags, tag.toLowerCase())
 
         })
-
-    }
-
-    displayIngredientsOfEachRecipe() {
-
-        let bdd = recipes
-
-        let cards = document.querySelectorAll('.card')
-
-        let correspondingRecipe = []
-
-        for (let i = 0; i < cards.length; i++) {
-
-            const card = cards[i];
-
-            if (card.style.display === 'flex' || card.style.display === '') {
-                let id = card.getAttribute("data-attribute")
-
-                const recipe = !id ? bdd : bdd.find(recipe => recipe.id == id);
-
-                correspondingRecipe.push(recipe);
-            }
-
-        }
-
-        let tags = []
-
-        correspondingRecipe.forEach(element => {
-            element.ingredients.map(ingredient => {
-
-                if (!tags.includes(ingredient.ingredient.toLowerCase())) {
-                    tags.push(ingredient.ingredient.toLowerCase())
-                }
-                
-            })
-        });
-
-        // console.log(tags)
-
-        tags.sort()
-
-        let ingredientsList = document.querySelector('.ingredients-list')
-
-        ingredientsList.innerHTML = `${tags.map(ingredient => 
-            `<li class="ingredients__item">${ingredient.charAt(0).toUpperCase() + ingredient.slice(1)}</li>`
-            // Mettre la premiere lettre en majuscule de chaque ingrédient
-        ).join(" ")}`
-
-        this.selectIngredient()
-
-    }
-
-    displayApplianceOfEachRecipe(recipe) {
-
-        // let bdd = recipes
-
-        // let cards = document.querySelectorAll('.card')
-
-        // let correspondingRecipe = []
-
-        // for (let i = 0; i < cards.length; i++) {
-
-        //     const card = cards[i];
-
-        //     if (card.style.display === 'flex' || card.style.display === '') {
-        //         let id = card.getAttribute("data-attribute")
-
-        //         const recipe = !id ? bdd : bdd.find(recipe => recipe.id == id);
-
-        //         correspondingRecipe.push(recipe);
-        //     }
-
-        // }
-
-        let tags = []
-
-        recipe.forEach(element => {
-
-            if (!tags.includes(element.appliance.toLowerCase())) {
-            
-                tags.push(element.appliance.toLowerCase())
-                
-            }
-
-        });
-
-        return tags
-
-        // tags.sort()
-
-        // let applianceList = document.querySelector('.appareil-list')
-
-        // applianceList.innerHTML = `${tags.map(appliance => 
-        //     `<li class="appareil__item">${appliance.charAt(0).toUpperCase() + appliance.slice(1)}</li>`
-        //     // Mettre la premiere lettre en majuscule de chaque ingrédient
-        // ).join(" ")}`
-
-        // this.selectAppareil()
 
     }
 
@@ -260,71 +123,83 @@ export default class search {
 
         }
 
-        let tags = []
+        for (let i = 0; i < type.length; i++) {
 
-        switch (type) {
-            case 'ingredaint':
-                tags = this.displayApplianceOfEachRecipe(correspondingRecipe)
-                break;
-            case 'Appleince':
+            let tags = []
+            const element = type[i];
+            switch (element) {
+                case 'ingredients':
+                    tags = this.displayIngredientsOfEachRecipe(correspondingRecipe, tags)
+                    break;
+
+                case 'appareil':
+                    tags = this.displayApplianceOfEachRecipe(correspondingRecipe, tags)
+                    break;
             
-                break;
-        
-                    
+                case 'ustensiles':
+                    tags = this.displayUstensilsOfEachRecipe(correspondingRecipe, tags)
+                    break;       
                 
-        
-            default:
-                break;
+            }
+
+            tags.sort()
+
+            let tagsList = document.querySelector('.' + element + '-list')
+
+            tagsList.innerHTML = `${tags.map(tag => 
+                `<li class="${element}__item">${tag.charAt(0).toUpperCase() + tag.slice(1)}</li>`
+                // Mettre la premiere lettre en majuscule de chaque ingrédient
+            ).join(" ")}`
+
+            this.selectIngredient()
+
+            this.selectAppareil()
+
+            this.selectUstensile()
+
         }
-
-        // correspondingRecipe.forEach(element => {
-
-        //     if (!tags.includes(element.appliance.toLowerCase())) {
-            
-        //         tags.push(element.appliance.toLowerCase())
-                
-        //     }
-
-        // });
-
-        tags.sort()
-
-        let tagsList = document.querySelector('.' + type + '-list')
-
-        tagsList.innerHTML = `${tags.map(tag => 
-            `<li class="${type}__item">${tag.charAt(0).toUpperCase() + tag.slice(1)}</li>`
-            // Mettre la premiere lettre en majuscule de chaque ingrédient
-        ).join(" ")}`
-
-        this.selectAppareil()
 
     }
 
-    displayUstensilsOfEachRecipe() {
+    displayIngredientsOfEachRecipe(recipe, tags) {
 
-        let bdd = recipes
+        recipe.forEach(element => {
 
-        let cards = document.querySelectorAll('.card')
+            element.ingredients.map(ingredient => {
 
-        let correspondingRecipe = []
+                if (!tags.includes(ingredient.ingredient.toLowerCase())) {
 
-        for (let i = 0; i < cards.length; i++) {
+                    tags.push(ingredient.ingredient.toLowerCase())
 
-            const card = cards[i];
+                }
+                
+            })
 
-            if (card.style.display === 'flex' || card.style.display === '') {
-                let id = card.getAttribute("data-attribute")
+        });
 
-                const recipe = !id ? bdd : bdd.find(recipe => recipe.id == id);
+        return tags
 
-                correspondingRecipe.push(recipe);
+    }
+
+    displayApplianceOfEachRecipe(recipe, tags) {
+
+        recipe.forEach(element => {
+
+            if (!tags.includes(element.appliance.toLowerCase())) {
+            
+                tags.push(element.appliance.toLowerCase())
+                
             }
 
-        }
+        });
 
-        let tags = []
+        return tags
 
-        correspondingRecipe.forEach(element => {
+    }
+
+    displayUstensilsOfEachRecipe(recipe, tags) {
+
+        recipe.forEach(element => {
 
             element.ustensils.map(ustensil => {
 
@@ -338,19 +213,9 @@ export default class search {
 
         });
 
-        tags.sort()
-
-        let ustensilsList = document.querySelector('.ustensiles-list')
-
-        ustensilsList.innerHTML = `${tags.map(ustensil => 
-            `<li class="ustensiles__item">${ustensil.charAt(0).toUpperCase() + ustensil.slice(1)}</li>`
-            // Mettre la premiere lettre en majuscule de chaque ustensile
-        ).join(" ")}`
-
-        this.selectUstensile()
+        return tags
 
     }
-    
 
     searchTag() {
 
