@@ -189,7 +189,56 @@ export default class search {
 
     }
 
-    displayApplianceOfEachRecipe() {
+    displayApplianceOfEachRecipe(recipe) {
+
+        // let bdd = recipes
+
+        // let cards = document.querySelectorAll('.card')
+
+        // let correspondingRecipe = []
+
+        // for (let i = 0; i < cards.length; i++) {
+
+        //     const card = cards[i];
+
+        //     if (card.style.display === 'flex' || card.style.display === '') {
+        //         let id = card.getAttribute("data-attribute")
+
+        //         const recipe = !id ? bdd : bdd.find(recipe => recipe.id == id);
+
+        //         correspondingRecipe.push(recipe);
+        //     }
+
+        // }
+
+        let tags = []
+
+        recipe.forEach(element => {
+
+            if (!tags.includes(element.appliance.toLowerCase())) {
+            
+                tags.push(element.appliance.toLowerCase())
+                
+            }
+
+        });
+
+        return tags
+
+        // tags.sort()
+
+        // let applianceList = document.querySelector('.appareil-list')
+
+        // applianceList.innerHTML = `${tags.map(appliance => 
+        //     `<li class="appareil__item">${appliance.charAt(0).toUpperCase() + appliance.slice(1)}</li>`
+        //     // Mettre la premiere lettre en majuscule de chaque ingrédient
+        // ).join(" ")}`
+
+        // this.selectAppareil()
+
+    }
+
+    displayTagsRecipe(type) {
 
         let bdd = recipes
 
@@ -213,22 +262,37 @@ export default class search {
 
         let tags = []
 
-        correspondingRecipe.forEach(element => {
-
-            if (!tags.includes(element.appliance.toLowerCase())) {
+        switch (type) {
+            case 'ingredaint':
+                tags = this.displayApplianceOfEachRecipe(correspondingRecipe)
+                break;
+            case 'Appleince':
             
-                tags.push(element.appliance.toLowerCase())
+                break;
+        
+                    
                 
-            }
+        
+            default:
+                break;
+        }
 
-        });
+        // correspondingRecipe.forEach(element => {
+
+        //     if (!tags.includes(element.appliance.toLowerCase())) {
+            
+        //         tags.push(element.appliance.toLowerCase())
+                
+        //     }
+
+        // });
 
         tags.sort()
 
-        let applianceList = document.querySelector('.appareil-list')
+        let tagsList = document.querySelector('.' + type + '-list')
 
-        applianceList.innerHTML = `${tags.map(appliance => 
-            `<li class="appareil__item">${appliance.charAt(0).toUpperCase() + appliance.slice(1)}</li>`
+        tagsList.innerHTML = `${tags.map(tag => 
+            `<li class="${type}__item">${tag.charAt(0).toUpperCase() + tag.slice(1)}</li>`
             // Mettre la premiere lettre en majuscule de chaque ingrédient
         ).join(" ")}`
 
