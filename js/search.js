@@ -72,11 +72,14 @@ export default class search {
                 }
 
                 if (this.selectedTags.length >= 1 && filtre1 === true) {
-                    this.selectedTags.forEach(element => {
-                        if (!x[i].innerHTML.toLowerCase().includes(element)) {
+
+                    for (let i = 0; i < this.selectedTags.length; i++) {
+                        const tag = this.selectedTags[i];
+                        if (!x[i].innerHTML.toLowerCase().includes(tag)) {
                             x[i].style.display = 'none'
                         }
-                    });
+                    }
+
                 }
 
                 this.displayTagsRecipe(this.table)
@@ -126,8 +129,11 @@ export default class search {
         for (let i = 0; i < type.length; i++) {
 
             let tags = []
+
             const element = type[i];
+
             switch (element) {
+                
                 case 'ingredients':
                     tags = this.displayIngredientsOfEachRecipe(correspondingRecipe, tags)
                     break;
@@ -147,8 +153,7 @@ export default class search {
             let tagsList = document.querySelector('.' + element + '-list')
 
             tagsList.innerHTML = `${tags.map(tag => 
-                `<li class="${element}__item">${tag.charAt(0).toUpperCase() + tag.slice(1)}</li>`
-                // Mettre la premiere lettre en majuscule de chaque ingrédient
+                `<li class="${element}__item">${tag.charAt(0).toUpperCase() + tag.slice(1)}</li>`      // Mettre la première lettre de chaque ingrédient en majuscule
             ).join(" ")}`
 
             this.selectIngredient()
