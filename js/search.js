@@ -14,13 +14,7 @@ export default class search {
 
         this.displayTagsRecipe(this.table)
 
-        // this.selectIngredient()
-
-        // this.selectAppareil()
-
-        // this.selectUstensile()
-
-        this.search()
+        this.searchEvent()
 
         this.searchTag()
 
@@ -41,7 +35,7 @@ export default class search {
         }
     }
 
-    search(){
+    searchEvent(){
 
         let searchBar = document.getElementById('searchBarInput')
 
@@ -51,42 +45,50 @@ export default class search {
 
             searchBar.addEventListener('keyup', event => {
 
-                let input = searchBar.value
-
-                input = input.toLowerCase();
-
-                x[i].style.display = 'flex'
-
-                let filtre1 = true
-
-                if (input.length >= 3) {
-
-                    if (!x[i].innerHTML.toLowerCase().includes(input)) {
-
-                        x[i].style.display = "none";
-
-                        filtre1 = false;
-
-                    } 
-
-                }
-
-                if (this.selectedTags.length >= 1 && filtre1 === true) {
-
-                    for (let i = 0; i < this.selectedTags.length; i++) {
-                        const tag = this.selectedTags[i];
-                        if (!x[i].innerHTML.toLowerCase().includes(tag)) {
-                            x[i].style.display = 'none'
-                        }
-                    }
-
-                }
-
-                this.displayTagsRecipe(this.table)
-
-                this.errorMessage()
+                this.filterBySearch(searchBar, x, i)
 
             }) 
+        }
+    }
+
+    filterBySearch(searchBar, x, i) {
+        let input = searchBar.value
+
+        input = input.toLowerCase();
+
+        x[i].style.display = 'flex'
+
+        let filtre1 = true
+
+        if (input.length >= 3) {
+
+            if (!x[i].innerHTML.toLowerCase().includes(input)) {
+
+                x[i].style.display = "none";
+
+                filtre1 = false;
+
+            } 
+
+        }
+
+        if (this.selectedTags.length >= 1 && filtre1 === true) {
+
+            this.filterByTag(x[i])
+
+        }
+
+        this.displayTagsRecipe(this.table)
+
+        this.errorMessage()
+    }
+
+    filterByTag(cards) {
+        for (let index = 0; index < this.selectedTags.length; index++) {
+            const tag = this.selectedTags[index];
+            if (!cards.innerHTML.toLowerCase().includes(tag)) {
+                cards.style.display = 'none'
+            }
         }
     }
 
@@ -99,6 +101,14 @@ export default class search {
             event.target.parentElement.remove()
 
             this.removeTag(this.selectedTags, tag.toLowerCase())
+
+            let searchBar = document.getElementById('searchBarInput')
+
+            let x = document.getElementsByClassName('card');
+
+            for (let i = 0; i < x.length; i++) {
+                this.filterBySearch(searchBar, x, i)
+            }
 
         })
 
@@ -133,7 +143,7 @@ export default class search {
             const element = type[i];
 
             switch (element) {
-                
+
                 case 'ingredients':
                     tags = this.displayIngredientsOfEachRecipe(correspondingRecipe, tags)
                     break;
@@ -274,6 +284,13 @@ export default class search {
 
                     new renderTags().renderIngredientTag(element.innerHTML)
 
+                    let x = document.getElementsByClassName('card');
+
+                    for (let i = 0; i < x.length; i++) {
+                        const cards = x[i];
+                        this.filterByTag(cards)
+                    }
+
                 }
                     
                 this.removeTagHTML(element.innerHTML.toLowerCase())
@@ -298,6 +315,13 @@ export default class search {
 
                     new renderTags().renderAppareilTag(element.innerHTML)
 
+                    let x = document.getElementsByClassName('card');
+
+                    for (let i = 0; i < x.length; i++) {
+                        const cards = x[i];
+                        this.filterByTag(cards)
+                    }
+
                 }
 
                 this.removeTagHTML(element.innerHTML.toLowerCase())
@@ -321,6 +345,13 @@ export default class search {
                     this.selectedTags.push(element.innerHTML.toLowerCase())
 
                     new renderTags().renderUstensilesTag(element.innerHTML)
+
+                    let x = document.getElementsByClassName('card');
+
+                    for (let i = 0; i < x.length; i++) {
+                        const cards = x[i];
+                        this.filterByTag(cards)
+                    }
 
                 }
                     
