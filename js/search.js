@@ -14,12 +14,6 @@ export default class search {
 
         this.displayTagsRecipe(this.table)
 
-        this.selectIngredient()
-
-        this.selectAppareil()
-
-        this.selectUstensile()
-
         this.search()
 
         this.searchTag()
