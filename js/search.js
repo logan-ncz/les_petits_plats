@@ -14,12 +14,6 @@ export default class search {
 
         this.displayTagsRecipe(this.table)
 
-        // this.displayIngredientsOfEachRecipe()
-
-        // this.displayApplianceOfEachRecipe()
-
-        // this.displayUstensilsOfEachRecipe()
-
         this.selectIngredient()
 
         this.selectAppareil()
@@ -58,36 +52,6 @@ export default class search {
             searchBar.addEventListener('keyup', event => {
 
                 this.filterBySearch(searchBar, card)
-
-                // let input = searchBar.value
-
-                // input = input.toLowerCase();
-
-                // card.style.display = 'flex'
-
-                // let filtre1 = true
-
-                // if (input.length >= 3) {
-
-                //     if (!card.innerHTML.toLowerCase().includes(input)) {
-
-                //         card.style.display = "none";
-
-                //         filtre1 = false;
-
-                //     } 
-
-                // }
-
-                // if (this.selectedTags.length >= 1 && filtre1 === true) {
-                    
-                //     this.filterByTag(card)
-
-                // }
-
-                // this.displayTagsRecipe(this.table)
-
-                // this.errorMessage()
 
             }) 
         })
@@ -148,6 +112,14 @@ export default class search {
             event.target.parentElement.remove()
 
             this.removeTag(this.selectedTags, tag.toLowerCase())
+
+            let searchBar = document.getElementById('searchBarInput')
+
+            let x = document.querySelectorAll('.card');
+
+            x.forEach(card => {
+                this.filterBySearch(searchBar, card)
+            });
 
         })
 
@@ -319,6 +291,12 @@ export default class search {
 
                     new renderTags().renderIngredientTag(element.innerHTML)
 
+                    let x = document.querySelectorAll('.card');
+
+                    x.forEach(card => {
+                        this.filterByTag(card)
+                    });
+
                 }
                     
                 this.removeTagHTML(element.innerHTML.toLowerCase())
@@ -343,6 +321,12 @@ export default class search {
 
                     new renderTags().renderAppareilTag(element.innerHTML)
 
+                    let x = document.querySelectorAll('.card');
+
+                    x.forEach(card => {
+                        this.filterByTag(card)
+                    });
+
                 }
 
                 this.removeTagHTML(element.innerHTML.toLowerCase())
@@ -366,6 +350,12 @@ export default class search {
                     this.selectedTags.push(element.innerHTML.toLowerCase())
 
                     new renderTags().renderUstensilesTag(element.innerHTML)
+
+                    let x = document.querySelectorAll('.card');
+
+                    x.forEach(card => {
+                        this.filterByTag(card)
+                    });
 
                 }
                     
