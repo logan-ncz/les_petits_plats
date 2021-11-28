@@ -57,46 +57,86 @@ export default class search {
 
             searchBar.addEventListener('keyup', event => {
 
-                let input = searchBar.value
+                this.filterBySearch(searchBar, card)
 
-                input = input.toLowerCase();
+                // let input = searchBar.value
 
-                card.style.display = 'flex'
+                // input = input.toLowerCase();
 
-                let filtre1 = true
+                // card.style.display = 'flex'
 
-                if (input.length >= 3) {
+                // let filtre1 = true
 
-                    if (!card.innerHTML.toLowerCase().includes(input)) {
+                // if (input.length >= 3) {
 
-                        card.style.display = "none";
+                //     if (!card.innerHTML.toLowerCase().includes(input)) {
 
-                        filtre1 = false;
+                //         card.style.display = "none";
 
-                    } 
+                //         filtre1 = false;
 
-                }
+                //     } 
 
-                if (this.selectedTags.length >= 1 && filtre1 === true) {
+                // }
+
+                // if (this.selectedTags.length >= 1 && filtre1 === true) {
                     
-                    this.selectedTags.forEach(tag => {
+                //     this.filterByTag(card)
 
-                        if (!card.innerHTML.toLowerCase().includes(tag)) {
+                // }
 
-                            card.style.display = 'none'
+                // this.displayTagsRecipe(this.table)
 
-                        }
-
-                    });
-
-                }
-
-                this.displayTagsRecipe(this.table)
-
-                this.errorMessage()
+                // this.errorMessage()
 
             }) 
         })
+    }
+
+    filterBySearch(searchBar, card) {
+        let input = searchBar.value
+
+        input = input.toLowerCase();
+
+        card.style.display = 'flex'
+
+        let filtre1 = true
+
+        if (input.length >= 3) {
+
+            if (!card.innerHTML.toLowerCase().includes(input)) {
+
+                card.style.display = "none";
+
+                filtre1 = false;
+
+            } 
+
+        }
+
+        if (this.selectedTags.length >= 1 && filtre1 === true) {
+            
+            this.filterByTag(card)
+
+        }
+
+        this.displayTagsRecipe(this.table)
+
+        this.errorMessage()
+    }
+
+    filterByTag(card) {
+
+        this.selectedTags.forEach(tag => {
+
+            if (!card.innerHTML.toLowerCase().includes(tag)) {
+
+                card.style.display = 'none'
+
+            }
+
+        });
+
     }
 
     removeTagHTML(tag) {
@@ -235,13 +275,6 @@ export default class search {
     }
 
     searchTag() {
-
-        // this.table.forEach(element => {
-
-        //     this.search(`search-${element}-input` , `${element}__item`)
-
-        // });
-        
 
         this.table.forEach(element => {
 
