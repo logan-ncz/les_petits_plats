@@ -26,38 +26,33 @@ class cards {
 
                 </div>
                 <div class="card-body">
-                <div class="card-body-top">
-                    <h5>${recipe.name}</h5>
-                    <div class="card-body-top-time">
-                    <img src="images/icons/clock.svg" alt="">
-                    <p>${recipe.time} min</p>
-                    </div>
-                </div>
-
-                <div class="card-body-bottom">
-                    <div class="card-body-bottom-ingredients">
-                    ${recipe.ingredients.map(ingredient =>
-                        
-                        // `<p class="card-ingredients__item"><b>${ingredient.ingredient}:</b> ${ingredient.quantity} ${ingredient.unit}</p>`).join(" ")}
-                        `<p class="card-ingredients__item">${template = this.ingredientChoiceIfUndefined(ingredient)}</p>`).join(" ")}
-
+                    <div class="card-body-top">
+                        <h5>${recipe.name}</h5>
+                        <div class="card-body-top-time">
+                            <img src="images/icons/clock.svg" alt="">
+                            <p>${recipe.time} min</p>
+                        </div>
                     </div>
 
-                    <div class="card-body-bottom-description">
-                    <p>${recipe.description}</p>
+                    <div class="card-body-bottom">
+                        <div class="card-body-bottom-ingredients">
+                            ${recipe.ingredients.map(ingredient =>
+                                `<p class="card-ingredients__item">${template = this.ingredientChoiceIfUndefined(ingredient)}</p>`).join(" ")}
+                        </div>
+
+                        <div class="card-body-bottom-description">
+                            <p>${recipe.description}</p>
+                        </div>
                     </div>
-                </div>
-                
-                
-                
+
                 </div>`
 
             cards.appendChild(card)
 
             card.innerHTML = HTML
 
-            
         })
+
     }
 
     ingredientChoiceIfUndefined(ingredient) {
@@ -82,6 +77,7 @@ class cards {
 
             return template
         }
+        
     }
 
 }
