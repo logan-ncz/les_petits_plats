@@ -234,13 +234,6 @@ export default class search {
 
     searchTag() {
 
-        // this.table.forEach(element => {
-
-        //     this.search(`search-${element}-input` , `${element}__item`)
-
-        // });
-        
-
         this.table.forEach(element => {
 
             let searchBar = document.getElementById(`search-${element}-input`)
@@ -313,6 +306,8 @@ export default class search {
                     
                     this.selectedTags.push(element.innerHTML.toLowerCase())
 
+                    console.log(this.selectedTags)
+
                     new renderTags().renderAppareilTag(element.innerHTML)
 
                     let x = document.getElementsByClassName('card');
@@ -323,6 +318,26 @@ export default class search {
                     }
 
                 }
+
+                // let x = document.getElementsByClassName('card');
+
+                // for (let i = 0; i < x.length; i++) {
+                    
+                //     const card = x[i];
+
+                //     let bdd = recipes
+
+                //     let id = card.getAttribute('data-attribute')
+
+                //     const recipe = !id ? bdd : bdd.find(recipe => recipe.id == id);
+
+                //     if(!recipe.appliance.includes(element.innerHTML.toLowerCase())) {
+                //         console.log('contenu')
+
+                //         this.selectedTags.push(element.innerHTML.toLowerCase())
+                //     }
+                    
+                // }
 
                 this.removeTagHTML(element.innerHTML.toLowerCase())
                 
