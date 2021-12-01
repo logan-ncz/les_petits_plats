@@ -11186,6 +11186,7 @@ textarea.form-control-lg {
 }
 
 .select-ingredients-btn, .select-appareil-btn, .select-ustensiles-btn {
+  cursor: pointer;
   font-size: 18px;
   color: white;
   width: 170px;
