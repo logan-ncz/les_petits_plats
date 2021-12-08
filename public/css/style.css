@@ -11341,4 +11341,10 @@ textarea.form-control-lg {
   overflow: hidden;
 }
 
+@media (min-width: 1600px) {
+  .searchBar i {
+    right: 10.1em;
+  }
+}
+
 /*# sourceMappingURL=style.css.map */
