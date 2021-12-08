@@ -95,6 +95,8 @@ export default class search {
 
         });
 
+        this.displayTagsRecipe(this.table)
+
     }
 
     removeTagHTML(tag) {
