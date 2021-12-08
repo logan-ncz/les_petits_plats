@@ -90,6 +90,8 @@ export default class search {
                 cards.style.display = 'none'
             }
         }
+
+        this.displayTagsRecipe(this.table)
     }
 
     removeTagHTML(tag) {
