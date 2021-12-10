@@ -369,8 +369,6 @@ export default class search {
                     
                     this.selectedAppareils.push(element.innerHTML.toLowerCase())
 
-                    console.log(this.selectedAppareils)
-
                     new renderTags().renderAppareilTag(element.innerHTML)
 
                     this.filterByAppareil(element.innerHTML)
