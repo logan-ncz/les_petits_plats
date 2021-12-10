@@ -20,6 +20,8 @@ class cards {
 
             card.setAttribute('data-attribute', recipe.id)
 
+            card.style.display = 'flex'
+
             let template = ``
 
             let HTML = `<div class="card-top">
