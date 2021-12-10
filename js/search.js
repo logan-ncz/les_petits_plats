@@ -12,6 +12,12 @@ export default class search {
 
         this.selectedTags = []
 
+        this.selectedIngredients = []
+
+        this.selectedAppareils = []
+
+        this.selectedUstensiles = []
+
         this.displayTagsRecipe(this.table)
 
         this.search()
@@ -72,50 +78,101 @@ export default class search {
 
         }
 
-        if (this.selectedTags.length >= 1 && filtre1 === true) {
-            
-            this.filterByTag(card)
-
-        }
-
         this.displayTagsRecipe(this.table)
 
         this.errorMessage()
     }
 
-    filterByTag(card) {
+    filterByIngredients(element) {
 
-        this.selectedTags.forEach(tag => {
+        let x = document.getElementsByClassName('card');
 
-            if (!card.innerHTML.toLowerCase().includes(tag)) {
+        for (let i = 0; i < x.length; i++) {
+            
+            const card = x[i];
+
+            if(!card.innerHTML.toLowerCase().includes(element.toLowerCase())) {
 
                 card.style.display = 'none'
 
             }
 
-        });
-
-        this.displayTagsRecipe(this.table)
+        }
 
     }
 
-    removeTagHTML(tag) {
+    filterByAppareil(element) {
+
+        let x = document.getElementsByClassName('card');
+
+        for (let i = 0; i < x.length; i++) {
             
-        let removeBtn = document.querySelector(`.removeTagBtn-${tag.toLowerCase().replace(/ /g, "_").replace(/[\d+()]/g, "")}`)
+            const card = x[i];
+
+            let bdd = recipes
+
+            let id = card.getAttribute('data-attribute')
+
+            const recipe = !id ? bdd : bdd.find(recipe => recipe.id == id);
+
+            if(card.style.display === 'flex') {
+
+                if(!recipe.appliance.toLowerCase().includes(element.toLowerCase())) {
+
+                    card.style.display = 'none'
+
+                }
+
+            }
+
+        }
+    }
+
+    filterByUstensiles(element) {
+
+        let x = document.getElementsByClassName('card');
+
+        for (let i = 0; i < x.length; i++) {
+            
+            const card = x[i];
+
+            let bdd = recipes
+
+            let id = card.getAttribute('data-attribute')
+
+            const recipe = !id ? bdd : bdd.find(recipe => recipe.id == id);
+
+            if(card.style.display === 'flex') {
+
+                if(!recipe.ustensils.includes(element.toLowerCase())) {
+
+                    card.style.display = 'none'
+
+                }
+
+            }
+
+        }
+
+    }
+
+    removeTagHTML(tag, tagArray) {
+            
+        let removeBtn = document.querySelector(`.removeTagBtn-${tag.toLowerCase().replace(/'/g, "_").replace(/ /g, "_").replace(/é/g, "e").replace(/[\d+()]/g, "")}`)
 
         removeBtn.addEventListener('click', event => {
 
             event.target.parentElement.remove()
 
-            this.removeTag(this.selectedTags, tag.toLowerCase())
+            this.removeTag(tagArray, tag.toLowerCase())
 
             let searchBar = document.getElementById('searchBarInput')
 
-            let x = document.querySelectorAll('.card');
+            let x = document.getElementsByClassName('card');
 
-            x.forEach(card => {
-                this.filterBySearch(searchBar, card)
-            });
+            for (let i = 0; i < x.length; i++) {
+                this.filterBySearch(searchBar, x[i])
+            }
 
         })
 
@@ -134,13 +191,11 @@ export default class search {
             const card = cards[i];
 
             if (card.style.display === 'flex' || card.style.display === '') {
-
                 let id = card.getAttribute("data-attribute")
 
                 const recipe = !id ? bdd : bdd.find(recipe => recipe.id == id);
 
                 correspondingRecipe.push(recipe);
-
             }
 
         }
@@ -148,11 +203,11 @@ export default class search {
         for (let i = 0; i < type.length; i++) {
 
             let tags = []
-            
+
             const element = type[i];
 
             switch (element) {
-                
+
                 case 'ingredients':
                     tags = this.displayIngredientsOfEachRecipe(correspondingRecipe, tags)
                     break;
@@ -172,8 +227,7 @@ export default class search {
             let tagsList = document.querySelector('.' + element + '-list')
 
             tagsList.innerHTML = `${tags.map(tag => 
-                `<li class="${element}__item">${tag.charAt(0).toUpperCase() + tag.slice(1)}</li>`   // Mettre la premiere lettre de chaque ingrédient en majuscule 
-                
+                `<li class="${element}__item">${tag.charAt(0).toUpperCase() + tag.slice(1)}</li>`      // Mettre la première lettre de chaque ingrédient en majuscule
             ).join(" ")}`
 
             this.selectIngredient()
@@ -281,21 +335,19 @@ export default class search {
 
             element.addEventListener('click', event => {
 
-                if(!this.selectedTags.includes(element.innerHTML.toLowerCase())) {
+                if(!this.selectedIngredients.includes(element.innerHTML.toLowerCase())) {
                     
-                    this.selectedTags.push(element.innerHTML.toLowerCase())
+                    this.selectedIngredients.push(element.innerHTML.toLowerCase())
 
                     new renderTags().renderIngredientTag(element.innerHTML)
 
-                    let x = document.querySelectorAll('.card');
-
-                    x.forEach(card => {
-                        this.filterByTag(card)
-                    });
+                    this.filterByIngredients(element.innerHTML)
 
                 }
+
+                this.displayTagsRecipe(this.table)
                     
-                this.removeTagHTML(element.innerHTML.toLowerCase())
+                this.removeTagHTML(element.innerHTML, this.selectedIngredients)
 
             })
 
@@ -311,21 +363,19 @@ export default class search {
 
             element.addEventListener('click', event => {
 
-                if(!this.selectedTags.includes(element.innerHTML.toLowerCase())) {
+                if(!this.selectedAppareils.includes(element.innerHTML.toLowerCase())) {
                     
-                    this.selectedTags.push(element.innerHTML.toLowerCase())
+                    this.selectedAppareils.push(element.innerHTML.toLowerCase())
 
                     new renderTags().renderAppareilTag(element.innerHTML)
 
-                    let x = document.querySelectorAll('.card');
-
-                    x.forEach(card => {
-                        this.filterByTag(card)
-                    });
+                    this.filterByAppareil(element.innerHTML)
 
                 }
 
-                this.removeTagHTML(element.innerHTML.toLowerCase())
+                this.displayTagsRecipe(this.table)
+
+                this.removeTagHTML(element.innerHTML, this.selectedAppareils)
                 
             })
 
@@ -341,21 +391,19 @@ export default class search {
 
             element.addEventListener('click', event => {
 
-                if(!this.selectedTags.includes(element.innerHTML.toLowerCase())) {
+                if(!this.selectedUstensiles.includes(element.innerHTML.toLowerCase())) {
                     
-                    this.selectedTags.push(element.innerHTML.toLowerCase())
+                    this.selectedUstensiles.push(element.innerHTML.toLowerCase())
 
                     new renderTags().renderUstensilesTag(element.innerHTML)
 
-                    let x = document.querySelectorAll('.card');
-
-                    x.forEach(card => {
-                        this.filterByTag(card)
-                    });
+                    this.filterByUstensiles(element.innerHTML)
 
                 }
+
+                this.displayTagsRecipe(this.table)
                     
-                this.removeTagHTML(element.innerHTML.toLowerCase())
+                this.removeTagHTML(element.innerHTML, this.selectedUstensiles)
                 
             })
 
