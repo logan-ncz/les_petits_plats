@@ -160,7 +160,7 @@ export default class search {
 
     removeTagHTML(tag, tagArray) {
             
-        let removeBtn = document.querySelector(`.removeTagBtn-${tag.toLowerCase().replace(/ /g, "_").replace(/[\d+()]/g, "")}`)
+        let removeBtn = document.querySelector(`.removeTagBtn-${tag.toLowerCase().replace(/'/g, "_").replace(/ /g, "_").replace(/[\d+()]/g, "").replace(/é/g, "e")}`)
 
         removeBtn.addEventListener('click', event => {
 
