@@ -12,7 +12,6 @@ export default class filtersBtn {
         this.table.forEach(element => {
 
             let selector = document.querySelector(`.select-${element}-selected`)
-            // let selector = document.querySelector('.select-' + type + '-selected')
 
             let selectBtn = document.querySelector(`.select-${element}-btn`)
 

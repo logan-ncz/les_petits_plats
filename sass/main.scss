@@ -38,7 +38,7 @@
 
 .filter {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     justify-content: flex-start;
     margin: 0.5rem 0 1rem;
 }
@@ -258,4 +258,36 @@
     .searchBar i {
         right: 10.1em;
     }
+}
+
+@media (max-width: 400px) {
+
+    .searchBar i {
+        top: 4.75em;
+        right: 1em;
+    }
+
+    .filter {
+        width: 5rem;
+        flex-direction: column;
+    }
+
+    .select-ingredients-selected, .select-appareil-selected, .select-ustensiles-selected {
+        width: 22rem;
+    }
+
+    .ingredients-list, .appareil-list, .ustensiles-list {
+        grid-template-columns: repeat(2, 2fr);
+    }
+
+    .recipes {
+        flex-direction: column;
+        align-items: center;
+        padding: 0;
+    }
+
+    .card {
+        width: 21rem;
+    }
+    
 }
