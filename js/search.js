@@ -174,6 +174,20 @@ export default class search {
                 this.filterBySearch(searchBar, x[i])
             }
 
+            this.selectedIngredients.map(tag => {
+                this.filterByIngredients(tag)
+            })
+
+            this.selectedAppareils.map(tag => {
+                this.filterByAppareil(tag)
+            })
+
+            this.selectedUstensiles.map(tag => {
+                this.filterByUstensiles(tag)
+            })
+
+            this.displayTagsRecipe(this.table)
+            
         })
 
     }
